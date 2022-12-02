@@ -58,7 +58,11 @@ if ($_POST['upload_csv_cert_renewal_group']) {
 
   	$no++;
 
+<<<<<<< HEAD
     $msg='Dear '.$name.', Kindly download student rules and regulations, Medical Agreement Form and Admission Agreement form from https://consolatamedcollege.ac.ke/january-2023-admission-docs.php?forms . Your access code is 6122 These forms must be presented during admission. Sister Leonella Consolata Medical College';
+=======
+    $msg='Dear '.$name.', Your son/ daughter shall proceed for one week break from 18/11/22 till 27/11/22. All fee arrears MUST be cleared before resumption. For clarification call us on 0724303431 Consolata Medical College';
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 
   	$query="INSERT INTO tb_messages(name,phone,message,group_name,stamp) VALUES ('".$name."','".$newNumber."','".$msg."','".$group_name."','".$stamp."')";
   	mysqli_query($con, $query);

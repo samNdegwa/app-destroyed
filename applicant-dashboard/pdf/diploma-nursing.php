@@ -1,5 +1,6 @@
 <?php
 include '../includes/student-data.php';
+<<<<<<< HEAD
 require_once 'dompdf/autoload.inc.php'; //we've assumed that the dompdf directory is in the same directory as your PHP file. If not, adjust your autoload.inc.php i.e. first line of code accordingly.
 
 // reference the Dompdf namespace
@@ -11,6 +12,8 @@ $dompdf = new Dompdf();
 
 //Get user information
 
+=======
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 $sql="SELECT applicants.applicant_id, courses.course_title, applicants.date_applied, intakes.year, intakes.month, applicants.status FROM applicants
    INNER JOIN courses ON applicants.course_id=courses.course_id INNER JOIN intakes ON applicants.intake_id=intakes.id WHERE applicant_id='$approved_app'";
     $result=mysqli_query($con,$sql) or die(mysql_error());
@@ -22,6 +25,7 @@ $sql="SELECT applicants.applicant_id, courses.course_title, applicants.date_appl
                   $date_applied=$row['date_applied'];
                   $status=$row['status'];
                 }
+<<<<<<< HEAD
 
      // Letter head image
 $image = 'letter.jpg';
@@ -41,6 +45,10 @@ $src2 = 'data:'.mime_content_type($image2).';base64,'.$imageData2;
 
 $txt='<div style="font-family: serif; font-size: 11pt;">
 <img src="'.$src.'" style="width:100%"><br>
+=======
+$txt='<div style="font-family: serif; font-size: 11pt;">
+<img src="letter.jpg"><br>
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
      <b>Our Ref: <i>SLCMC/ADM/'.$intake_month.'/'.$intake_year.'</i></b><br>                 
 
       <b>Date: '.$approval_date.'</b><br>
@@ -70,7 +78,11 @@ $txt='<div style="font-family: serif; font-size: 11pt;">
     <p> We wish you the best of luck in your training with us. </p>
 
      <p> Yours faithfully, </p><br><br><br><br><br>
+<<<<<<< HEAD
           <img src="'.$src2.'" style="width:100px"><br>
+=======
+          <img src="sign.png" style="width:100px;"><br>
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
      <b>JUMA ALFRED</b><br>
      
       <u><b><i>The College Principal</i></b></u>
@@ -79,6 +91,7 @@ $txt='<div style="font-family: serif; font-size: 11pt;">
      <i style="font-size:0.5em;">This is a system generated document. &copy; Sister Leonella Consolata Medical College 2022. All rights reserved</i>
      </di>';
 
+<<<<<<< HEAD
 $dompdf->loadHtml($txt);
 
 // (Optional) Setup the paper size and orientation
@@ -89,4 +102,11 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $dompdf->stream('diploma in nursing.pdf',array('Attachment'=>0));
+=======
+require_once __DIR__ . '/vendor/autoload.php';
+
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML($txt);
+$mpdf->Output();
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 ?>

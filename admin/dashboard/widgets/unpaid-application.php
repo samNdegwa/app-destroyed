@@ -148,8 +148,13 @@
 
      function pay_application(btn){
        var tr = $(btn).parent().parent();
+<<<<<<< HEAD
          var code = $(tr).children('td:eq(2)').html();
          var name = $(tr).children('td:eq(3)').html();
+=======
+         var code = $(tr).children('td:eq(1)').html();
+         var name = $(tr).children('td:eq(2)').html();
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 
          document.getElementById("app_code1").innerHTML = code;
          document.getElementById("app_name1").innerHTML = name;
@@ -230,7 +235,11 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
+<<<<<<< HEAD
           td = tr[i].getElementsByTagName("td")[2];
+=======
+          td = tr[i].getElementsByTagName("td")[1];
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
           if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
               tr[i].style.display = "";

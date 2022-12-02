@@ -1,5 +1,6 @@
 <?php
 include '../includes/student-data.php';
+<<<<<<< HEAD
 require_once 'dompdf/autoload.inc.php'; //we've assumed that the dompdf directory is in the same directory as your PHP file. If not, adjust your autoload.inc.php i.e. first line of code accordingly.
 
 // reference the Dompdf namespace
@@ -11,6 +12,8 @@ $dompdf = new Dompdf();
 
 //Get user information
 
+=======
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 $sql="SELECT applicants.applicant_id, courses.course_title, applicants.date_applied, intakes.year, intakes.month, applicants.status FROM applicants
    INNER JOIN courses ON applicants.course_id=courses.course_id INNER JOIN intakes ON applicants.intake_id=intakes.id WHERE applicant_id='$approved_app'";
     $result=mysqli_query($con,$sql) or die(mysql_error());
@@ -22,6 +25,7 @@ $sql="SELECT applicants.applicant_id, courses.course_title, applicants.date_appl
                   $date_applied=$row['date_applied'];
                   $status=$row['status'];
                 }
+<<<<<<< HEAD
 
      // Letter head image
 $image = 'letter.jpg';
@@ -42,6 +46,11 @@ $src2 = 'data:'.mime_content_type($image2).';base64,'.$imageData2;
 $txt='<div style="font-family: serif; font-size: 11pt;">
 <img src="'.$src.'" style="width:100%"><br>
       <b>Our Ref: <i>SLCMC/ADM/'.$intake_month.'/'.$intake_year.'</i></b><br>                 
+=======
+$txt='<div style="font-family: serif; font-size: 11pt;">
+<img src="letter.jpg"><br>
+     <b>Our Ref: <i>SLCMC/ADM/'.$intake_month.'/'.$intake_year.'</i></b><br>                 
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 
       <b>Date: '.$approval_date.'</b><br>
 
@@ -69,17 +78,26 @@ $txt='<div style="font-family: serif; font-size: 11pt;">
         Enclosed herewith, please find a fees structure, a list of personal effects and a list of books to be brought on the admission day.  The student’s/guardian’s pledge section on the college rules and regulations must be signed and copy of the page be brought upon admission.
     <p> We wish you the best of luck in your training with us. </p>
 
+<<<<<<< HEAD
 
      <p> Yours faithfully, </p><br><br><br><br><br>
           <img src="'.$src2.'" style="width:100px"><br>
      <b>JUMA ALFRED</b><br>
      
       <u><b><i>The College Principal</i></b></u>
+=======
+     <p> Yours faithfully, </p><br><br><br><br><br>
+
+     <b>JUMA ALFRED</b><br>
+     <img src="sign.png" style="width:100px;"><br>
+      <u>The College Principal</u>
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
      
      <br><br><br><br>
      <i style="font-size:0.5em;">This is a system generated document. &copy; Sister Leonella Consolata Medical College 2022. All rights reserved</i>
      </di>';
 
+<<<<<<< HEAD
 $dompdf->loadHtml($txt);
 
 // (Optional) Setup the paper size and orientation
@@ -90,4 +108,11 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $dompdf->stream('diploma in perioperative theatre.pdf',array('Attachment'=>0));
+=======
+require_once __DIR__ . '/vendor/autoload.php';
+
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML($txt);
+$mpdf->Output();
+>>>>>>> c9b07b141756ad46f87c08af49d500dab87c50d0
 ?>
